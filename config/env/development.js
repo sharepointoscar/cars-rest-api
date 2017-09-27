@@ -17,8 +17,16 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
+  models: {
+    migrate:'safe',
+      connection: 'devMongoTestInstance'
+   },
+
+  /***************************************************************************
+   * Set the port in the developm ent environment to 443                        *
+   ***************************************************************************/
+
+   port: process.env.PORT || 1337,
+ 	 environment: process.env.NODE_ENV || 'development'
 
 };

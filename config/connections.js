@@ -64,6 +64,10 @@ module.exports.connections = {
      //password: 'password', //optional
      database: 'cars_api' //optional
    },
+   productionMongoServer: {
+    adapter   : 'sails-mongo',
+    url      : 'mongodb://heroku_9k6rtlqg:ddpn3taa1jhru03us2bproerfr@ds149874.mlab.com:49874/heroku_9k6rtlqg'
+  },
 
   /***************************************************************************
   *                                                                          *
