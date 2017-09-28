@@ -60,13 +60,11 @@ module.exports.connections = {
      adapter: 'sails-mongo',
      host: 'localhost',
      port: 27017,
-     //user: 'username', //optional
-     //password: 'password', //optional
-     database: 'cars_api' //optional
+     database: 'cars_api'
    },
    productionMongoServer: {
     adapter   : 'sails-mongo',
-    url      : 'mongodb://heroku_9k6rtlqg:ddpn3taa1jhru03us2bproerfr@ds149874.mlab.com:49874/heroku_9k6rtlqg'
+    url: process.env.MONGODB_URI
   },
 
   /***************************************************************************
