@@ -14,15 +14,26 @@ module.exports = {
     },
     model: {
 			type: 'string',
-			enum:['R8','Carrera','F250']
+      enum:['R8','Carrera','F250'],
     },
     make: {
       type: 'string',
       enum: ['Audi', 'Porsche', 'Ferrari']
     },
+    color: {
+      type: 'string'
+    },
     // this car has one owner
     owner: {
       model: 'person'
+    }
+  },
+
+  // Custom validation messages
+  // (available for use in this model's attribute definitions above)
+  validationMessages: {
+    model: {
+      in: 'Invalid car model option.  Not within allowed values.'
     }
   }
 };
