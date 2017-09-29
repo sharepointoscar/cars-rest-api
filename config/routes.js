@@ -33,8 +33,11 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
-  }
+    view: 'homepage',
+    cors: {
+        origin: '*'    
+     }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -46,4 +49,56 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'get /car': {
+    controller: 'CarController',
+    action: 'create',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['GET', 'POST'],
+        summary: ' Get Cars ',
+        description: 'Get all Cars',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Cars'
+        ],
+        responses: {
+            '200': {
+                description: 'List of Cars',
+                schema: 'Car', // api/model/Group.js,
+                type: 'array'
+            }
+        },
+        parameters: []
+
+      }
+  },
+  'put /car/:id': {
+    controller: 'CarController',
+    action: 'update',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['PUT', 'POST'],
+        summary: 'Update Cars ',
+        description: 'Update Cars',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Groups'
+        ],
+        responses: {
+            '200': {
+                description: 'Updated a Car',
+                schema: 'Group' // api/model/Group.js
+            }
+        },
+        parameters: [
+            'Car' // api/model/Group.js
+        ]
+    }
+  }
 };

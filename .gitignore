@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -134,8 +131,6 @@ node_modules
 bower_components
 
 
-
-
 ################################################
 # Sails.js / Waterline / Grunt
 #
@@ -180,7 +175,4 @@ npm-debug.log
 nbproject
 .idea
 .node_history
-<<<<<<< HEAD
-=======
->>>>>>> first commit (yeah not initial commit)
->>>>>>> 4c0ec58289f0963a98e7209132d0e4121366f77c
+

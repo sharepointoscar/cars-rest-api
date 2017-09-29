@@ -34,6 +34,9 @@ module.exports = {
   validationMessages: {
     model: {
       in: 'Invalid car model option.  Not within allowed values.'
+    },
+    make: {
+      in: 'Invalid car make option.  Not within allowed values.'
     }
   }
 };

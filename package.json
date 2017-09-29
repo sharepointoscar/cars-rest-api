@@ -14,7 +14,9 @@
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
     "sails-hook-validation": "^0.4.7",
-    "sails-mongo": "^0.12.2"
+    "sails-mongo": "^0.12.2",
+    "sails-swagger": "^0.5.1",
+    "swagger-ui": "^2.2.10"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -26,5 +28,6 @@
     "url": "git://github.com/SharePointOscar/cars-api.git"
   },
   "author": "me",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {}
 }

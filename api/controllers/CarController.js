@@ -6,12 +6,15 @@
  */
 
 module.exports = {
+
+    // Override the Sails built-in action for this Controller (only this one is overridden)
     create: function (req, res) {
      
          var car = {
             year: req.param('year'),
             model: req.param('model'),
-            make: req.param('make')
+            make: req.param('make'),
+            color: req.param('color')
         };
 
         Car.create(car)
@@ -24,9 +27,10 @@ module.exports = {
                 else {
     
                     sails.log.silly('res.ok() :: Sending 200 ("OK") response.  Car created successfully.');
-                    res.json(model);
+                    res.json(200,model);
                 }
             });
-    }
+    },
+    
 };
 
