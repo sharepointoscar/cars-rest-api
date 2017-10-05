@@ -88,12 +88,12 @@ module.exports.routes = {
             'application/json'
         ],
         tags: [
-            'Groups'
+            'Cars'
         ],
         responses: {
             '200': {
                 description: 'Updated a Car',
-                schema: 'Group' // api/model/Group.js
+                schema: 'Car' // api/model/Group.js
             }
         },
         parameters: [
