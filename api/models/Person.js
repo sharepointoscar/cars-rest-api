@@ -21,6 +21,9 @@ module.exports = {
       type: 'string',
     	required: true,
     },
+    picture: {
+      type:'binary'
+    },
     // all the cars this person owns
     cars: {
       collection: 'car',

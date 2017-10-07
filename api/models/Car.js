@@ -23,6 +23,9 @@ module.exports = {
     color: {
       type: 'string'
     },
+    photo:{
+      type:'binary'
+    },
     // this car has one owner
     owner: {
       model: 'person'

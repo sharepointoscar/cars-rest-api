@@ -51,11 +51,11 @@ module.exports.routes = {
 
   'get /car': {
     controller: 'CarController',
-    action: 'create',
+    action: 'find',
     skipAssets: 'true',
     //swagger path object
     swagger: {
-        methods: ['GET', 'POST'],
+        methods: ['GET'],
         summary: ' Get Cars ',
         description: 'Get all Cars',
         produces: [
@@ -66,12 +66,37 @@ module.exports.routes = {
         ],
         responses: {
             '200': {
-                description: 'List of Cars',
-                schema: 'Car', // api/model/Group.js,
+                description: 'List all Cars',
+                schema: 'Car', // api/model/Car.js,
                 type: 'array'
             }
         },
         parameters: []
+
+      }
+  },
+  'get /car/:id': {
+    controller: 'CarController',
+    action: 'find',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['GET'],
+        summary: ' Get a specific Car ',
+        description: 'Gets a specific Car by id',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Cars'
+        ],
+        responses: {
+            '200': {
+                description: 'returns a specific Car',
+                schema: 'Car' // api/model/Car.js,
+            }
+        },
+        parameters: ['id']
 
       }
   },
@@ -82,8 +107,8 @@ module.exports.routes = {
     //swagger path object
     swagger: {
         methods: ['PUT', 'POST'],
-        summary: 'Update Cars ',
-        description: 'Update Cars',
+        summary: 'Update Car values ',
+        description: 'Update Car',
         produces: [
             'application/json'
         ],
@@ -93,11 +118,11 @@ module.exports.routes = {
         responses: {
             '200': {
                 description: 'Updated a Car',
-                schema: 'Car' // api/model/Group.js
+                schema: 'Car' // api/model/Car.js
             }
         },
         parameters: [
-            'Car' // api/model/Group.js
+            'Car' // api/model/Car.js
         ]
     }
   }
