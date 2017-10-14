@@ -66,6 +66,17 @@ module.exports.connections = {
     adapter   : 'sails-mongo',
     url: process.env.MONGODB_URI
   },
+  myLocalElasticsearch: {
+    adapter: 'elasticsearch',
+    hosts: ['http://127.0.0.1:9200'],
+    keepAlive: true,
+    sniffOnStart: true,
+    maxRetries: 10,
+    deadTimeout: 40000,
+    sniffOnConnectionFault: true,
+    index:'car-api',
+    apiVersion: '5.6'
+  }
 
   /***************************************************************************
   *                                                                          *

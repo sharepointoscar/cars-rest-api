@@ -30,7 +30,16 @@ module.exports = {
                     res.json(200,model);
                 }
             });
-    },
+    }, 
+    find: function(req,res){
+     
+        Car.find().exec(function(err,foundRecords){
+            if(err) {res.negotiate(err);}
+            console.log('CarController:find() returning cars found....');
+            return res.json(foundRecords);
+
+        });
+    }
     
 };
 

@@ -11,6 +11,10 @@
 
 module.exports.bootstrap = function(cb) {
 
+
+    // Your post-lift startup code here
+    sails.log('=============== hey your code just executed sails has been LIFTED!');
+  
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();

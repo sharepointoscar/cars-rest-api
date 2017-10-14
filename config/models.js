@@ -10,8 +10,7 @@
  */
 
 module.exports.models = {
-
   migrate:'safe',
-  connection: 'productionMongoServer'
-
+  connections: ['localMongodbServer','myLocalElasticsearch']
+    
 };

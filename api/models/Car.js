@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  connections:['localMongodbServer','myLocalElasticsearch'],
   attributes: {
 		year: {
 			type: 'datetime',
@@ -30,8 +30,33 @@ module.exports = {
     owner: {
       model: 'person'
     }
-  },
+  },  
+  afterCreate: function (value, callback){
+ 
+    sails.log(JSON.stringify(value,null,2));
 
+    var DSLQuery ={
+			index: 'car-api',
+			type: 'car',
+      id: value.id,
+      parent:'3434343434',
+			body: JSON.stringify(value)
+		};
+    sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
+      if(err){sails.log("elastic search response err: "+ err);}
+
+      sails.log(response);
+
+    });
+    sails.log('hit Car.afterCreate() function, using callback()');
+   
+  },
+  afterUpdate: function (value, callback){
+    //this.updateIndex(value.id, value, callback)
+  },
+  afterDestroy: function (value, callback){
+    //this.destroyIndex(value.id, callback)
+  },
   // Custom validation messages
   // (available for use in this model's attribute definitions above)
   validationMessages: {
@@ -42,5 +67,6 @@ module.exports = {
       in: 'Invalid car make option.  Not within allowed values.'
     }
   }
+
 };
 

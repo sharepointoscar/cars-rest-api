@@ -49,7 +49,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /car': {
+  'GET /car': {
     controller: 'CarController',
     action: 'find',
     skipAssets: 'true',
@@ -75,7 +75,7 @@ module.exports.routes = {
 
       }
   },
-  'get /car/:id': {
+  'GET /car/:id': {
     controller: 'CarController',
     action: 'find',
     skipAssets: 'true',
@@ -100,7 +100,33 @@ module.exports.routes = {
 
       }
   },
-  'put /car/:id': {
+  'POST /car': {
+    controller: 'CarController',
+    action: 'create',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['POST'],
+        summary: 'Create Car ',
+        description: 'Create Car with appropriate metadata',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Cars'
+        ],
+        responses: {
+            '200': {
+                description: 'Create a Car',
+                schema: 'Car' // api/model/Car.js
+            }
+        },
+        parameters: [
+            'Car' // api/model/Car.js
+        ]
+    }
+  },
+  'PUT /car/:id': {
     controller: 'CarController',
     action: 'update',
     skipAssets: 'true',
