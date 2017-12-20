@@ -1,4 +1,9 @@
-
+/**
+ * index.js
+ *
+ * @description :: This hook ensures the creation of the Elasticsearch Mappings on our models
+ *                 and opens a connection to Elasticsearch for use within the application. 
+ */
 module.exports = function(sails){
     // private methods and variables
 

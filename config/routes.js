@@ -49,6 +49,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'GET /person' : 'PersonController.find',
+  'POST /person' : 'PersonController.create',
+
   'GET /car': {
     controller: 'CarController',
     action: 'find',
@@ -77,7 +80,7 @@ module.exports.routes = {
   },
   'GET /car/:id': {
     controller: 'CarController',
-    action: 'find',
+    action: 'findOne    ',
     skipAssets: 'true',
     //swagger path object
     swagger: {
@@ -89,7 +92,7 @@ module.exports.routes = {
         ],
         tags: [
             'Cars'
-        ],
+        ],  
         responses: {
             '200': {
                 description: 'returns a specific Car',

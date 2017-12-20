@@ -33,10 +33,26 @@ module.exports = {
     }, 
     find: function(req,res){
      
-        Car.find().exec(function(err,foundRecords){
+        Car.find().
+        populate('owner')
+        .exec(function(err,foundRecords){
             if(err) {res.negotiate(err);}
             console.log('CarController:find() returning cars found....');
             return res.json(foundRecords);
+
+        });
+    },
+    findOne: function(req,res){
+        var _carId = req.param('id');
+
+        if (_.isEmpty(_carId)){return res.badRequest();}
+
+        Car.find({id:_carId}).
+        populate('owner')
+        .exec(function(err,foundRecord){
+            if(err) {res.negotiate(err);}
+            console.log('CarController:findOne() returning cars by id....');
+            return res.json(foundRecord);
 
         });
     }
