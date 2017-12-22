@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  connections:['localMongodbServer','myLocalElasticsearch'],
+  //connections:['localMongodbServer','myLocalElasticsearch'],
   attributes: {
 
     email: {

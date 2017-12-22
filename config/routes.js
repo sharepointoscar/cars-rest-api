@@ -48,6 +48,8 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+  //'POST /graphql': 'GraphQLController.index',
+
 
   'GET /person' : 'PersonController.find',
   'POST /person' : 'PersonController.create',

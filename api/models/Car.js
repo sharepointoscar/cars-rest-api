@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+ 
   connections:['localMongodbServer','myLocalElasticsearch'],
   attributes: {
 		year: {
@@ -57,6 +58,8 @@ module.exports = {
   afterDestroy: function (value, callback){
     //this.destroyIndex(value.id, callback)
   },
+
+
   // Custom validation messages
   // (available for use in this model's attribute definitions above)
   validationMessages: {

@@ -9,6 +9,7 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
 
+var getGraphQLSchema = require('waterline-to-graphql');
 module.exports.http = {
 
   /****************************************************************************
@@ -30,23 +31,25 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    // order: [
-    //   'startRequestTimer',
-    //   'cookieParser',
-    //   'session',
-    //   'myRequestLogger',
-    //   'bodyParser',
-    //   'handleBodyParserError',
-    //   'compress',
-    //   'methodOverride',
-    //   'poweredBy',
-    //   '$custom',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    //   '404',
-    //   '500'
-    // ],
+     order: [
+       'startRequestTimer',
+       'cookieParser',
+       'session',
+       'myRequestLogger',
+        'graphql',
+       'bodyParser',
+       'handleBodyParserError',
+       'compress',
+       'methodOverride',
+       'poweredBy',
+       '$custom',
+       'router',
+       'www',
+       'favicon',
+       '404',
+       '500'
+     ],
+
 
   /****************************************************************************
   *                                                                           *
@@ -58,7 +61,20 @@ module.exports.http = {
     //     console.log("Requested :: ", req.method, req.url);
     //     return next();
     // }
-
+    graphql: function(req, res, next) {
+      console.log('executing graphql query');
+      if (req.url === '/graphql') {
+        var schema = getGraphQLSchema.getGraphQLSchemaFrom(sails.models);
+        sails.log(require('graphql').printSchema(schema));
+        require('express-graphql')({
+            schema: schema,
+            graphiql: true,
+            pretty: true
+          })(req, res);
+      } else {
+        return next();
+      }
+    }
 
   /***************************************************************************
   *                                                                          *

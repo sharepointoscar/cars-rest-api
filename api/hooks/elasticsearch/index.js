@@ -40,7 +40,7 @@ module.exports = function(sails){
                         "car" : {
                             "_all": { "enabled": false},
                             "properties" : {
-                                "year" : { "type" : "date" },
+                                "year" : { "type" : "date",format:"strict_date_optional_time" },
                                 "model": {"type": 'text'},
                                 "make": {"type": 'text'},
                                 "color": {"type": 'text'}

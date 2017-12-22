@@ -11,6 +11,7 @@
 
 module.exports.models = {
   migrate:'safe',
+  schema: true,
   connections: ['localMongodbServer','myLocalElasticsearch']
     
 };

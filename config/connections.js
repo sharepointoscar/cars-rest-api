@@ -76,6 +76,17 @@ module.exports.connections = {
     sniffOnConnectionFault: true,
     index:'car-api',
     apiVersion: '5.6'
+  },
+  productionElasticsearch: {
+    adapter: 'elasticsearch',
+    hosts: [process.env.BONSAI_URL],
+    keepAlive: true,
+    sniffOnStart: true,
+    maxRetries: 10,
+    deadTimeout: 40000,
+    sniffOnConnectionFault: true,
+    index:'car-api',
+    apiVersion: '5.4.3'
   }
 
   /***************************************************************************
