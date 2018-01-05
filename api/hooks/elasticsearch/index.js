@@ -5,11 +5,12 @@
  *                 and opens a connection to Elasticsearch for use within the application. 
  */
 module.exports = function(sails){
+    
     // private methods and variables
-
-    var privateVar = 'hidden';
     var elasticsearch = require('elasticsearch');
+    //instantiate elasticsearch client with local config
     var client = new elasticsearch.Client(sails.config.connections.myLocalElasticsearch);
+    
     return {  
         elasticClient: client,
         configure: function() {
@@ -30,7 +31,7 @@ module.exports = function(sails){
                     "mappings": {
                         "person":{
                             "_all": { "enabled": false},
-                            "_routing":{"required": false},
+                            "_routing":{"required": true},
                             "properties": {
                                 "email": {"type":'text'},
                                 "firstname": {"type": 'text'},
@@ -46,25 +47,35 @@ module.exports = function(sails){
                                 "color": {"type": 'text'}
                             },
                             "_parent": {"type": "person"},
-                            "_routing":{"required": false}
+                            "_routing":{"required": true}
                         }
                     }
                 }
         };
 
-        if(client.indices.exists({index:'car-api'},function(err,response,status){
+        client.indices.exists({index:'car-api'},function(err,response,status){
             
-            if(err){sails.log(JSON.stringify(err));}
+            if(err){sails.log(JSON.stringify(err,null,2));}
 
-            //if the index does not exist create it
+            sails.log(JSON.stringify(response,null,2));
+            
+            //if the car-api index does not exist create it
             if(!response){
-                client.indices.create(config, function(){console.log('************ CREATE CAR INDEX ********************* ')});
-                sails.log('************ INDEX CAR-API DOES NOT EXISTS CREATING ********************* ');
+                client.indices.create(config, function(err,response){
+                    if(err){sails.log(JSON.stringify(err,null,2));
+                    }
+                    else{
+                       
+                        sails.log(JSON.stringify(response,null,2));
+                    }
+ 
+                });
+                
             }else{ 
                 sails.log('************ INDEX CAR-API ALREADY EXISTS NOT CREATED ********************* ');
             }
 
-        }));
+        });
 
         },
       

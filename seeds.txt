@@ -1,0 +1,53 @@
+/**
+ * Sails Seed Settings
+ * (sails.config.seeds)
+ *
+ * Configuration for the data seeding in Sails.
+ *
+ * For more information on configuration, check out:
+ * http://github.com/frostme/sails-seed
+ */
+
+module.exports.seeds = {
+
+    disable: true,
+    _hookTimeout: 100000,
+    person: { 
+        disable: true,
+        overwrite: true,
+        data: [{
+            'firstname': 'Oscar',
+            'lastname': 'Medina',
+            'email': 'me@sharepointoscar.com'
+            }]
+    },
+    car: { 
+        disable: true,
+        overwrite: true,
+        data:[{
+                'year': '2017',
+                'make': 'Audi',
+                'model': 'R8',
+                'color': 'Red'
+            },
+            {
+                'year': '2012',
+                'model': 'R8',
+                'make': 'Audi',
+                'color': 'White'
+            },
+            {
+                'year': '1971',
+                'model': 'Carrera',
+                'make': 'Porsche',
+                'color': 'Silver'
+            },
+            {
+                'year': '1975',
+                'model': 'Carrera',
+                'make': 'Porsche',
+                'color': 'Red'
+   
+            }]
+    }
+};

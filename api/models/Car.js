@@ -10,16 +10,14 @@ module.exports = {
   connections:['localMongodbServer','myLocalElasticsearch'],
   attributes: {
 		year: {
-			type: 'datetime',
-			unique: false
+			type: 'datetime'
     },
     model: {
-			type: 'string',
-      enum:['R8','Carrera','F250'],
+			type: 'string'
     },
     make: {
       type: 'string',
-      enum: ['Audi', 'Porsche', 'Ferrari']
+      enum: ['Audi', 'Porsche', 'Ferrari','Maserati','Aston Martin','Lamborghini','Lotus','McLaren']
     },
     color: {
       type: 'string'
@@ -32,24 +30,23 @@ module.exports = {
       model: 'person'
     }
   },  
-  afterCreate: function (value, callback){
+  afterCreate: function (car, callback){
  
-    sails.log(JSON.stringify(value,null,2));
+    sails.log("NEW CAR: "+JSON.stringify(car,null,2));
 
     var DSLQuery ={
 			index: 'car-api',
 			type: 'car',
-      id: value.id,
-      parent:'3434343434',
-			body: JSON.stringify(value)
+      id: car.id,
+      parent:3434343434,
+			body: JSON.stringify(car)
 		};
     sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
-      if(err){sails.log("elastic search response err: "+ err);}
+      if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
 
       sails.log(response);
-
+      return callback()
     });
-    sails.log('hit Car.afterCreate() function, using callback()');
    
   },
   afterUpdate: function (value, callback){

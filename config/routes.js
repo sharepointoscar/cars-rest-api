@@ -82,7 +82,7 @@ module.exports.routes = {
   },
   'GET /car/:id': {
     controller: 'CarController',
-    action: 'findOne    ',
+    action: 'findOne',
     skipAssets: 'true',
     //swagger path object
     swagger: {
@@ -130,14 +130,14 @@ module.exports.routes = {
             'Car' // api/model/Car.js
         ]
     }
-  },
+  },    
   'PUT /car/:id': {
     controller: 'CarController',
     action: 'update',
     skipAssets: 'true',
     //swagger path object
     swagger: {
-        methods: ['PUT', 'POST'],
+        methods: ['PUT'],
         summary: 'Update Car values ',
         description: 'Update Car',
         produces: [

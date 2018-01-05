@@ -75,7 +75,7 @@ module.exports.connections = {
     deadTimeout: 40000,
     sniffOnConnectionFault: true,
     index:'car-api',
-    apiVersion: '5.6'
+    apiVersion: '6.0'
   },
   productionElasticsearch: {
     adapter: 'elasticsearch',
