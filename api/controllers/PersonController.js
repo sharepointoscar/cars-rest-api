@@ -28,7 +28,7 @@ module.exports = {
             }
         });
     },
-    find: function(req,res){
+    getAll: function(req,res){
 
         Person.find()
         .populate('cars')
@@ -36,6 +36,20 @@ module.exports = {
             if(err) {res.negotiate(err);}
             console.log('PersonController:find() returning people found....');
             return res.json(foundRecords);
+        });
+    },
+    findOne: function(req,res){
+        var _personId = req.param('id');
+
+        if (_.isEmpty(_personId)){return res.badRequest();}
+
+        Person.find({id:_personId}).
+        populate('cars')
+        .exec(function(err,foundRecord){
+            if(err) {res.negotiate(err);}
+            console.log('CarController:findOne() returning person by id....');
+            return res.json(foundRecord);
+
         });
     }
 

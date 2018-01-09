@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  //connections:['localMongodbServer','myLocalElasticsearch'],
+  connections:['localMongodbServer','myLocalElasticsearch'],
   attributes: {
 
     email: {
@@ -29,6 +29,15 @@ module.exports = {
       collection: 'car',
       via: 'owner'
     }
+  },
+  afterCreate: function (person, callback){
+   
+  },
+  afterUpdate: function (value, callback){
+    //this.updateIndex(value.id, value, callback)
+  },
+  afterDestroy: function (value, callback){
+    //this.destroyIndex(value.id, callback)
   }
 
 };

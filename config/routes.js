@@ -51,8 +51,111 @@ module.exports.routes = {
   //'POST /graphql': 'GraphQLController.index',
 
 
-  'GET /person' : 'PersonController.find',
-  'POST /person' : 'PersonController.create',
+  'GET /person': {
+    controller: 'PersonController',
+    action: 'getAll',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['GET'],
+        summary: 'Get all Person objects',
+        description: 'Retrieves all Person objects with appropriate metadata',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Person'
+        ],
+        responses: {
+            '200': {
+                description: 'List all Person objects',
+                schema: 'Person', // api/model/Person.js
+                type: 'array'
+            }
+        },
+        parameters: [
+            'Person' // api/model/Person.js
+        ]
+    }
+  },
+  'GET /person/:id': {
+    controller: 'CarController',
+    action: 'findOne',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['GET'],
+        summary: ' Get a specific Person ',
+        description: 'Gets a specific Person by id',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Person'
+        ],  
+        responses: {
+            '200': {
+                description: 'returns a specific Person',
+                schema: 'Person' // api/model/Car.js,
+            }
+        },
+        parameters: ['id']
+
+      }
+  },
+  'POST /person': {
+    controller: 'PersonController',
+    action: 'create',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['POST'],
+        summary: 'Create Person ',
+        description: 'Create Person with appropriate metadata',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Person'
+        ],
+        responses: {
+            '200': {
+                description: 'Create a Person',
+                schema: 'Person' // api/model/Person.js
+            }
+        },
+        parameters: [
+            'Person' // api/model/Person.js
+        ]
+    }
+  },
+  'PUT /person/:id': {
+    controller: 'PersonController',
+    action: 'update',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['PUT'],
+        summary: 'Update Person values ',
+        description: 'Update Person',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Person'
+        ],
+        responses: {
+            '200': {
+                description: 'Updated a Person',
+                schema: 'Person' // api/model/Person.js
+            }
+        },
+        parameters: [
+            'Person' // api/model/Person.js
+        ]
+    }
+  },
+
 
   'GET /car': {
     controller: 'CarController',

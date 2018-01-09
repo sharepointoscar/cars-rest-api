@@ -29,25 +29,17 @@ module.exports = function(sails){
                         "number_of_replicas" : 2 
                     },
                     "mappings": {
-                        "person":{
-                            "_all": { "enabled": false},
-                            "_routing":{"required": true},
-                            "properties": {
-                                "email": {"type":'text'},
-                                "firstname": {"type": 'text'},
-                                "lastname": {"type": 'text'}
-                            }
-                        },
                         "car" : {
-                            "_all": { "enabled": false},
                             "properties" : {
                                 "year" : { "type" : "date",format:"strict_date_optional_time" },
                                 "model": {"type": 'text'},
                                 "make": {"type": 'text'},
-                                "color": {"type": 'text'}
-                            },
-                            "_parent": {"type": "person"},
-                            "_routing":{"required": true}
+                                "color": {"type": 'text'},
+                                "coordinates":{"type": "geo_point"},
+                                "person": {
+                                    "type": "nested" 
+                                  }
+                            }
                         }
                     }
                 }

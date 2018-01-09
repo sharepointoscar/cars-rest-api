@@ -13,41 +13,50 @@ module.exports.seeds = {
     disable: true,
     _hookTimeout: 100000,
     person: { 
-        disable: true,
+        disable: false,
         overwrite: true,
         data: [{
-            'firstname': 'Oscar',
-            'lastname': 'Medina',
-            'email': 'me@sharepointoscar.com'
+                'firstname': 'Oscar',
+                'lastname': 'Medina',
+                'email': 'me@sharepointoscar.com'
+            },
+            {
+                'firstname': 'Ginger',
+                'lastname': 'Medina',
+                'email': 'ginger@sharepointoscar.com'
             }]
     },
     car: { 
-        disable: true,
         overwrite: true,
         data:[{
                 'year': '2017',
                 'make': 'Audi',
                 'model': 'R8',
-                'color': 'Red'
+                'color': 'Red',
+                'coordinates': [ -118.8091667, 34.005 ] //malibu 
             },
             {
                 'year': '2012',
                 'model': 'R8',
                 'make': 'Audi',
-                'color': 'White'
+                'color': 'White',
+                'coordinates': [ -122.431297, 37.773972 ] // San Francisco
             },
             {
                 'year': '1971',
                 'model': 'Carrera',
                 'make': 'Porsche',
-                'color': 'Silver'
+                'color': 'Silver',
+                'coordinates': [ -87.623177, 41.881832 ] // Chicago
             },
             {
                 'year': '1975',
                 'model': 'Carrera',
                 'make': 'Porsche',
-                'color': 'Red'
+                'color': 'Red',
+                'coordinates': [ -80.191788, 25.761681 ] // Miami
    
             }]
     }
+    
 };

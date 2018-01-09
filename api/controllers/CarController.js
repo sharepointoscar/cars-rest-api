@@ -51,11 +51,10 @@ module.exports = {
         populate('owner')
         .exec(function(err,foundRecord){
             if(err) {res.negotiate(err);}
-            console.log('CarController:findOne() returning cars by id....');
+            console.log('CarController:findOne() returning car by id....');
             return res.json(foundRecord);
 
         });
-    }
-    
+    }   
 };
 
