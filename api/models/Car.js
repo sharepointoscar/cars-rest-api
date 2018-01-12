@@ -37,30 +37,32 @@ module.exports = {
   afterCreate: function (car, callback){
  
     sails.log("NEW CAR: "+JSON.stringify(car,null,2));
+    sails.log("IS ELASTIC ENABLEDED: "+ process.env.ENABLE_ELASTICSEARCH);
+      if(process.env.ENABLE_ELASTICSEARCH){
+        var DSLQuery ={
+          index: 'car-api',
+          type: 'car',
+          id: car.id,
+          body: JSON.stringify(car)
+        };
+        sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
+          if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
+    
+          sails.log(response);
+    
+        });
+    }
 
-    var DSLQuery ={
-			index: 'car-api',
-			type: 'car',
-      id: car.id,
-			body: JSON.stringify(car)
-		};
-    sails.hooks.elasticsearch.elasticClient.create(DSLQuery,function(err,response){
-      if(err){sails.log("elastic search response err: "+ JSON.stringify(err,null,2));}
-
-      sails.log(response);
-
-    });
 
     callback();
   },
   afterUpdate: function (car, callback){
  
-
     sails.log("UPDATED CAR: "+JSON.stringify(car,null,2));
 
     // handle if there is an owner for this car
     // on this update operation
-    if(car.owner) {
+    if(car.owner && process.env.ENABLE_ELASTICSEARCH) {
       var _carOwner = {};
       Person.findOne(car.owner)
       .exec(function (err, p){
@@ -89,7 +91,8 @@ module.exports = {
          
         });
       });
-    }else{
+    }else {
+      
       // no owner specified but other metadata might have changed, so update.
       sails.log('car owner not specified, updating other car props');
     }

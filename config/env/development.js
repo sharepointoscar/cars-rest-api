@@ -27,6 +27,8 @@ module.exports = {
    ***************************************************************************/
 
    port: 1337,
- 	 environment: 'development'
+ 	 environment: 'development',
 
 };
+
+

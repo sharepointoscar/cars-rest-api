@@ -5,7 +5,7 @@
  *                 and opens a connection to Elasticsearch for use within the application. 
  */
 module.exports = function(sails){
-    
+
     // private methods and variables
     var elasticsearch = require('elasticsearch');
     //instantiate elasticsearch client with local config
