@@ -35,8 +35,7 @@ module.exports.http = {
        'startRequestTimer',
        'cookieParser',
        'session',
-       'myRequestLogger',
-        'graphql',
+       'graphql',
        'bodyParser',
        'handleBodyParserError',
        'compress',
@@ -53,14 +52,10 @@ module.exports.http = {
 
   /****************************************************************************
   *                                                                           *
-  * Example custom middleware; logs each request to the console.              *
+  * Example custom middleware; GraphQL                                        s*
   *                                                                           *
   ****************************************************************************/
 
-    // myRequestLogger: function (req, res, next) {
-    //     console.log("Requested :: ", req.method, req.url);
-    //     return next();
-    // }
     graphql: function(req, res, next) {
       console.log('executing graphql query');
       if (req.url === '/graphql') {

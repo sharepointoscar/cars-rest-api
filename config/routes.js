@@ -50,6 +50,7 @@ module.exports.routes = {
   ***************************************************************************/
   //'POST /graphql': 'GraphQLController.index',
 
+  'POST /textwidget' : 'TextwidgetController.getText',
 
   'GET /person': {
     controller: 'PersonController',

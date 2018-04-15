@@ -38,7 +38,7 @@ module.exports = {
  
     sails.log("NEW CAR: "+JSON.stringify(car,null,2));
     sails.log("IS ELASTIC ENABLEDED: "+ process.env.ENABLE_ELASTICSEARCH);
-      if(process.env.ENABLE_ELASTICSEARCH){
+      if(process.env.ENABLE_ELASTICSEARCH == true){
         var DSLQuery ={
           index: 'car-api',
           type: 'car',
@@ -62,7 +62,7 @@ module.exports = {
 
     // handle if there is an owner for this car
     // on this update operation
-    if(car.owner && process.env.ENABLE_ELASTICSEARCH) {
+    if(car.owner && process.env.ENABLE_ELASTICSEARCH == true) {
       var _carOwner = {};
       Person.findOne(car.owner)
       .exec(function (err, p){

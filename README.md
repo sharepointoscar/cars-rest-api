@@ -4,10 +4,10 @@ a [Sails](http://sailsjs.org) application that can be used while you test Docker
 
 This is a sample REST API project based on SailsJS, showcases blueprints, actions and other out of the box capabilities.  It also showcases how to use the ELK stack (Elasticsearch, Logstash, Kibana), models have a coordinates field, and therefore you can show cars on the map within Kibana visualizations.
 
-# Overview
+## Overview
 The cars-api App demonstrates how to use the Microservice API Gateway Pattern.
 
-# Architecture
+## Architecture
 
   The following components are part of the overall solution
 - Cars REST API
@@ -24,6 +24,8 @@ ElasticSearch is used by a custom SailsJS Hook to be able to index Car and Perso
 ## Swagger API Documentation
 The sailsjs-swagger and swagger-ui are used to product the REST API documentation accessible via http://localhost:1337/docs which brings up the Swagger UI
 
+## GraphQL Middleware
+The Cars API also comes with a custom middleware that can serve GraphQL and respond to queries.  This middleware is found under `config/http.js`  You can disable this via the environment variable `DISABLE_GRAPHQL` and setting that to `false`.
 # Features
 The app comes with various capabilities in terms of deployment.
 
@@ -38,3 +40,4 @@ The app comes with various capabilities in terms of deployment.
 | ------------- | ------------- | ------
 | ENABLE_ELASTICSEARCH  | disables/enables Elasticsearch  | true
 | DISABLE_SAILS_SEED  | Useful if you want to quickly have some sample data  | false
+| DISABLE_GRAPHQL     | true disables the middleware, false enables it | false

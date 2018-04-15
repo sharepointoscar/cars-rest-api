@@ -10,10 +10,9 @@
 
 module.exports.seeds = {
 
-    disable: process.env.DISABLE_SAILS_SEED,
+    disable: true,
     _hookTimeout: 100000,
     person: { 
-        disable: false,
         overwrite: true,
         data: [{
                 'firstname': 'Oscar',

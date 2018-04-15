@@ -58,7 +58,7 @@ module.exports.connections = {
   ***************************************************************************/
    localMongodbServer: {
      adapter: 'sails-mongo',
-     host: 'localhost',
+     host: process.env.MONGODB_HOST || 'localhost',
      port: 27017,
      database: 'cars_api'
    },
