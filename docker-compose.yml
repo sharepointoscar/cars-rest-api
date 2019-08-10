@@ -12,15 +12,21 @@ services:
       - PORT=1337
       - MONGODB_HOST=database
       - MONGODB_PORT=27017
+      - MONGODB_URI=mongodb://mongoadmin:password01@database:27017/cars_api?authSource=admin
       - ENABLE_ELASTICSEARCH=false
       - DISABLE_SAILS_SEED=false
+      - DISABLE_GRAPHQL=true
     depends_on:
       - database
     links:
       - database
   database:
-    image: mongo:3.2.12
+    image: mongo:4.0
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=password01
+    restart: always
     ports:
       - 27017:27017
     volumes:
-      - /Users/sharepointoscar/Documents:/var/lib/mongodb
+      - /Users/omedina/Documents:/var/lib/mongodb
