@@ -47,10 +47,24 @@ module.exports = {
         populate('cars')
         .exec(function(err,foundRecord){
             if(err) {res.negotiate(err);}
-            console.log('CarController:findOne() returning person by id....');
+            sails.log('PersonController:findOne() returning person by id....');
             return res.json(foundRecord);
 
         });
+    },
+    deleteOne: function(req,res){
+        var _personId = req.param('id');
+        if (_.isEmpty(_personId)){return res.badRequest();}
+
+        Person.destroy({id:_personId})
+        .exec(function(err,foundRecord){
+
+            if(err) {res.negotiate(err);}
+
+            sails.log('PersonController:deleteOne() deleting person by id....');
+            return res.json(foundRecord);
+        });
+
     }
 
 };

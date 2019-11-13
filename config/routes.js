@@ -156,7 +156,32 @@ module.exports.routes = {
         ]
     }
   },
-
+  'DELETE /person/:id': {
+    controller: 'PersonController',
+    action: 'deleteOne',
+    skipAssets: 'true',
+    //swagger path object
+    swagger: {
+        methods: ['DELETE'],
+        summary: 'Delete a Person ',
+        description: 'Delete Person',
+        produces: [
+            'application/json'
+        ],
+        tags: [
+            'Person'
+        ],
+        responses: {
+            '200': {
+                description: 'Deleted a Person',
+                schema: 'Person' // api/model/Person.js
+            }
+        },
+        parameters: [
+            'Person' // api/model/Person.js
+        ]
+    }
+  },
 
   'GET /car': {
     controller: 'CarController',
